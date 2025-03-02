@@ -1,0 +1,26 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env/
+myenv/
+# IDE/Editor files
+*.vscode/
+.idea/
+*.swp
+
+# Logs and databases
+*.log
+*.db
+
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebook checkpoints (if applicable)
+.ipynb_checkpoints/
