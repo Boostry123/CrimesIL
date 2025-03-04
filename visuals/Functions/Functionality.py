@@ -40,3 +40,4 @@ def cityNames():
         print(f"Error fetching city names: {e}")
         return []
     
+

@@ -10,9 +10,13 @@ from .Functions import *
 
 # Create a class that controls the main canvas all visuals are plotted to.
 class CrimeDataCanvas:
-    def __init__(self, master):
-        self.master = master
+    def __init__(self, gui):
+        self.gui = gui
         self.canvas = None
+
+
+    # Function for main menu
+    
 
 
     # Function to plot the top 10 cities by total crimes
@@ -35,7 +39,7 @@ class CrimeDataCanvas:
             if self.canvas is not None:
                 self.canvas.get_tk_widget().destroy()
             # Embed the plot in the Tkinter window
-            self.canvas = FigureCanvasTkAgg(fig, master=self.master)
+            self.canvas = FigureCanvasTkAgg(fig, master=self.gui)
             self.canvas.get_tk_widget().grid(row=1, column=0, columnspan=11, padx=10, pady=10, sticky="nsew")
             self.canvas.draw()
           
@@ -63,7 +67,7 @@ class CrimeDataCanvas:
             if self.canvas is not None:
                 self.canvas.get_tk_widget().destroy()
             # Embed the plot in the Tkinter window
-            self.canvas = FigureCanvasTkAgg(fig, master=self.master)
+            self.canvas = FigureCanvasTkAgg(fig, master=self.gui)
             self.canvas.get_tk_widget().grid(row=1, column=0, columnspan=11, padx=10, pady=10, sticky="nsew")
             self.canvas.draw()
           
