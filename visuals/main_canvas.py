@@ -40,7 +40,7 @@ class CrimeDataCanvas:
                 self.canvas.get_tk_widget().destroy()
             # Embed the plot in the Tkinter window
             self.canvas = FigureCanvasTkAgg(fig, master=self.gui)
-            self.canvas.get_tk_widget().grid(row=1, column=0, columnspan=11, padx=10, pady=10, sticky="nsew")
+            self.canvas.get_tk_widget().grid(row=1, column=0, columnspan=3, padx=10, pady=10, sticky="nsew")
             self.canvas.draw()
           
             

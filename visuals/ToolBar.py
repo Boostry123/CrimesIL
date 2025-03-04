@@ -9,8 +9,8 @@ from .main_canvas import *
 # main_canvas (the canvas plots are displayed), 
 # create_gui (function to create a new GUI)
 class ToolBar:
-    def __init__(self, root,main_canvas,create_gui):
-        self.root = root
+    def __init__(self, frame,main_canvas,create_gui):
+        self.root = frame
         self.canvas = main_canvas
     
         #-----------------------------------------Buttons------------------------------------------------------------------
@@ -22,7 +22,6 @@ class ToolBar:
         self.addApp = Button(self.root, text="Add", command=create_gui, style="TButton")
         self.addApp.grid(row=0, column=2,sticky="en")
                 
-
         # Button for the top 10 cities
                 
         plot_Top10_button = Button(self.root, text="Top 10", command=self.canvas.plot_top_ten, style="TButton")
