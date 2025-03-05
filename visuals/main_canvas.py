@@ -12,11 +12,13 @@ from .Functions import *
 class CrimeDataCanvas:
     def __init__(self, gui):
         self.gui = gui
-        self.canvas = None
+        self.canvas = None    
 
-
-    # Function for main menu
-    
+        # Main canvas the plot will be displayed on
+        self.main_canvas_frame = Frame(self.gui)
+        self.main_canvas_frame.grid_rowconfigure(1, weight=1)
+        self.main_canvas_frame.grid_columnconfigure(0, weight=1)
+        self.main_canvas_frame.grid(row=1,column=0, columnspan=3, sticky="nsew")
 
 
     # Function to plot the top 10 cities by total crimes
@@ -39,10 +41,9 @@ class CrimeDataCanvas:
             if self.canvas is not None:
                 self.canvas.get_tk_widget().destroy()
             # Embed the plot in the Tkinter window
-            self.canvas = FigureCanvasTkAgg(fig, master=self.gui)
+            self.canvas = FigureCanvasTkAgg(fig, master=self.main_canvas_frame)
             self.canvas.get_tk_widget().grid(row=1, column=0, columnspan=3, padx=10, pady=10, sticky="nsew")
             self.canvas.draw()
-          
             
         except Exception as e:
             messagebox.showerror("Error", f"Error fetching data: {e}")
@@ -67,11 +68,19 @@ class CrimeDataCanvas:
             if self.canvas is not None:
                 self.canvas.get_tk_widget().destroy()
             # Embed the plot in the Tkinter window
-            self.canvas = FigureCanvasTkAgg(fig, master=self.gui)
+            self.canvas = FigureCanvasTkAgg(fig, master=self.main_canvas_frame)
             self.canvas.get_tk_widget().grid(row=1, column=0, columnspan=11, padx=10, pady=10, sticky="nsew")
             self.canvas.draw()
           
             
         except Exception as e:
             messagebox.showerror("Error", f"Error fetching data: {e}")
+
+        
+    def hide(self):
+        if(self.main_canvas_frame.winfo_viewable()):
+            self.main_canvas_frame.grid_forget()
+    def show(self):
+        if(not self.main_canvas_frame.winfo_viewable()):
+            self.main_canvas_frame.grid()
 

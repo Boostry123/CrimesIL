@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from .main_canvas import CrimeDataCanvas
 from .ToolBar import *
 from .Functions import *
+from .main_page import *
 
 # Create a class to handle the GUI
 class Gui:
@@ -13,31 +14,31 @@ class Gui:
         self.root.title("Crime Data Visualization")
         self.root.geometry("800x600")
 
+        
         # Main canvas the plot will be displayed on
-        main_canvas_frame = Frame(self.root)
-        main_canvas_frame.grid_rowconfigure(1, weight=1)
-        main_canvas_frame.grid_columnconfigure(0, weight=1)
-        main_canvas_frame.grid(row=1,column=0, columnspan=3, sticky="nsew")
-        self.canvas = CrimeDataCanvas(main_canvas_frame)
+        self.canvas = CrimeDataCanvas(self.root)
 
         # Configure the grid to make the canvas expandable
         self.root.grid_rowconfigure(1, weight=1)
-        for i in range(3):
+        for i in range(4):
             self.root.grid_columnconfigure(i, weight=1)
+
+        #-----------------------------------------Main---------------------------------------------------------------------
+        self.mainPage = MainPage(self.root)
+        self.mainPage.buttons()
 
         #-----------------------------------------ToolBar------------------------------------------------------------------
         toolBar_frame = Frame(self.root,border=1,relief="solid")
 
         toolBar_frame.grid_rowconfigure(0, weight=1)
-        toolBar_frame.grid_columnconfigure(2, weight=1)
+        toolBar_frame.grid_columnconfigure(4, weight=1)
 
-        toolBar_frame.grid(row=0,column=0,columnspan=3, sticky="ew")
-        self.toolBar = ToolBar(toolBar_frame, self.canvas, create_gui)
+        toolBar_frame.grid(row=0,column=0,columnspan=4, sticky="ew")
+        self.toolBar = ToolBar(toolBar_frame, self.canvas,self.mainPage, create_gui)
         
         #------------------------------------------------------------------------------------------------------------------
 
-        #-----------------------------------------Main---------------------------------------------------------------------
-
+        
         
         
 
